@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barylis - Historial de Pagos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">Barylis</div>
+        <nav>
+            <a href="tables.html">Mesas</a>
+            <a href="history.html" class="active">Historial de Pagos</a>
+            <a href="admin.html">Administración</a>
+            <button id="logout-btn" class="btn btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="history-container">
+            <h1>Historial de Pagos Diarios</h1>
+            <div class="history-total">
+                Total del Día: <span id="daily-total">$0.00</span>
+            </div>
+            <hr>
+            <div id="payments-list">
+                <p>No hay pagos registrados hoy.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>

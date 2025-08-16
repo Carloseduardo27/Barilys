@@ -357,3 +357,95 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
 .hidden {
     display: none !important;
 }
+
+/* menu hamburguesa
+
+/* --- Estilos para el Menú Hamburguesa --- */
+.hamburger-btn {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--white-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* --- Media Queries para Responsividad (Modificaciones) --- */
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: row; 
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .hamburger-btn {
+        display: block; 
+    }
+
+    .nav-container {
+        display: none; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        box-shadow: var(--shadow);
+        z-index: 1000;
+    }
+
+    .nav-container.active {
+        display: block; 
+    }
+
+    .main-header nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+
+
+    .main-header nav a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: none !important; 
+    }
+    
+    /* ... más estilos ... */
+}
+    
+    .main-header nav a:hover {
+        background-color: var(--dark-color);
+        border-bottom: none;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+}
+.logo-img { 
+    height: 55px;
+    width: 55px;         
+    border-radius: 50%; 
+    object-fit: cover;   
+    vertical-align: middle; 
+    margin-right: 10px;
+}
+.main-header 
+.logo { display: flex; align-items: center; }

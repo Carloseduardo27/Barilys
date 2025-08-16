@@ -41,13 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchTables();
   });
 
-  /*window.deleteTable = async (id) => {
-    if (confirm('¿Estás seguro de que quieres eliminar esta mesa?')) {
-      await fetch(`${API_URL}/tables/${id}`, { method: 'DELETE', headers });
-      fetchTables();
-    }
-  };*/
-
+  
   window.deleteTable = async (id) => {
     showConfirmModal(
       'Eliminar Mesa',
@@ -121,13 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0); // Scroll to top to see the form
   };
 
-  /*window.deleteMenuItem = async (id) => {
-    if (confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
-      await fetch(`${API_URL}/menu/${id}`, { method: 'DELETE', headers });
-      fetchMenuItems();
-    }
-  };*/
-
+ 
   window.deleteMenuItem = async (id) => {
     showConfirmModal(
       'Eliminar Artículo',

@@ -22,15 +22,6 @@ exports.addTable = async (req, res) => {
   }
 };
 
-// Eliminar una mesa
-/*exports.deleteTable = async (req, res) => {
-  try {
-    await Table.findByIdAndRemove(req.params.id);
-    res.json({ msg: 'Mesa eliminada' });
-  } catch (err) {
-    res.status(500).send('Error del servidor');
-  }
-};*/
 
 // Eliminar una mesa
 exports.deleteTable = async (req, res) => {

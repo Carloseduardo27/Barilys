@@ -100,22 +100,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderOrder(updatedOrder);
   };
 
-  /*document
-    .getElementById('clear-order-btn')
-    .addEventListener('click', async () => {
-      if (!currentOrder || currentOrder.items.length === 0) return;
-      if (confirm('¿Deseas vaciar la orden actual?')) {
-        const res = await fetch(`${API_URL}/orders/${currentOrder._id}/clear`, {
-          method: 'POST',
-          headers,
-        });
-        const updatedOrder = await res.json();
-        renderOrder(updatedOrder);
-      }
-    });*/
-
-  // En frontend/js/menu.js
-//nuevo 
   document
     .getElementById('clear-order-btn')
     .addEventListener('click', async () => {

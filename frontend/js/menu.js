@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderOrder(updatedOrder);
   };
 
-  document
+  /*document
     .getElementById('clear-order-btn')
     .addEventListener('click', async () => {
       if (!currentOrder || currentOrder.items.length === 0) return;
@@ -112,6 +112,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         const updatedOrder = await res.json();
         renderOrder(updatedOrder);
       }
+    });*/
+
+  // En frontend/js/menu.js
+//nuevo 
+  document
+    .getElementById('clear-order-btn')
+    .addEventListener('click', async () => {
+      if (!currentOrder || currentOrder.items.length === 0) return;
+
+      showConfirmModal(
+        'Despejar Orden',
+        '¿Deseas vaciar la orden actual?',
+        async () => {
+          const res = await fetch(
+            `${API_URL}/orders/${currentOrder._id}/clear`,
+            {
+              method: 'POST',
+              headers,
+            }
+          );
+          const updatedOrder = await res.json();
+          renderOrder(updatedOrder);
+        }
+      );
     });
 
   document

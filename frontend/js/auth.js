@@ -51,3 +51,74 @@ if (loginForm) {
     }
   });
 }
+
+// --- LÓGICA DEL MODAL PERSONALIZADO ---
+
+// Obtenemos las referencias a los elementos del modal una sola vez
+const modal = document.getElementById('custom-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalMessage = document.getElementById('modal-message');
+const confirmBtn = document.getElementById('modal-confirm-btn');
+const cancelBtn = document.getElementById('modal-cancel-btn');
+
+let onConfirmCallback = null;
+let onCancelCallback = null;
+
+// Función para mostrar un modal de confirmación (con dos botones)
+function showConfirmModal(title, message, onConfirm, onCancel) {
+  if (!modal) return; // Si no hay modal en la página, no hacer nada
+
+  modalTitle.textContent = title;
+  modalMessage.textContent = message;
+  onConfirmCallback = onConfirm;
+  onCancelCallback = onCancel;
+
+  confirmBtn.textContent = 'Aceptar';
+  confirmBtn.style.display = 'inline-block';
+  cancelBtn.style.display = 'inline-block';
+  
+  modal.classList.remove('hidden');
+  // Re-añadimos la clase para que el navegador fuerce la animación
+  setTimeout(() => modal.classList.remove('hidden'), 0);
+}
+
+// Función para mostrar un modal de alerta (con un solo botón)
+function showAlertModal(title, message, onOk) {
+  if (!modal) return;
+
+  modalTitle.textContent = title;
+  modalMessage.textContent = message;
+  onConfirmCallback = onOk;
+
+  confirmBtn.textContent = 'Entendido';
+  confirmBtn.style.display = 'inline-block';
+  cancelBtn.style.display = 'none'; // Ocultamos el botón de cancelar
+
+  modal.classList.remove('hidden');
+  setTimeout(() => modal.classList.remove('hidden'), 0);
+}
+
+function hideModal() {
+  if (!modal) return;
+  modal.classList.add('hidden');
+  // Limpiamos los callbacks para evitar ejecuciones accidentales
+  onConfirmCallback = null;
+  onCancelCallback = null;
+}
+
+// Event Listeners para los botones
+if (modal) {
+    confirmBtn.addEventListener('click', () => {
+        if (typeof onConfirmCallback === 'function') {
+            onConfirmCallback();
+        }
+        hideModal();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        if (typeof onCancelCallback === 'function') {
+            onCancelCallback();
+        }
+        hideModal();
+    });
+}

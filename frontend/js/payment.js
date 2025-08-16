@@ -34,8 +34,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       addPaymentMethod(); // Añadir el primer método de pago por defecto
     } catch (error) {
       console.error('Error al obtener la tasa de cambio:', error);
-      alert('No se pudo obtener la tasa de cambio. Inténtalo de nuevo.');
-      window.location.href = 'menu.html';
+      showAlertModal(
+        'Error',
+        'No se pudo obtener la tasa de cambio. Inténtalo de nuevo.',
+        () => {
+          window.location.href = 'menu.html';
+        }
+      );
     }
   };
 
@@ -140,7 +145,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 0);
 
     if (totalPaid < currentOrder.total) {
-      alert('El monto pagado es menor al total de la orden.');
+      showAlertModal(
+        'Monto Insuficiente',
+        'El monto pagado es menor al total de la orden.'
+      );
       return;
     }
 
@@ -155,14 +163,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }),
       });
 
-      alert('¡Pago procesado exitosamente!');
-      localStorage.removeItem('currentOrder');
-      window.location.href = 'tables.html';
+      showAlertModal('¡Éxito!', 'Pago procesado exitosamente.', () => {
+        localStorage.removeItem('currentOrder');
+        window.location.href = 'tables.html';
+      });
     } catch (error) {
       console.error('Error al procesar el pago:', error);
-      alert('Hubo un error al procesar el pago.');
+      showAlertModal(
+        'Error',
+        'Hubo un problema al procesar el pago. Por favor, inténtalo de nuevo.'
+      );
     }
-  });
+  }); // <-- ESTA ES LA LLAVE QUE FALTABA
 
   document.getElementById('back-to-menu-btn').addEventListener('click', () => {
     window.location.href = 'menu.html';

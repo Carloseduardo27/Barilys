@@ -1,6 +1,6 @@
 // Cargar variables de entorno
 require('dotenv').config({ path: './backend/.env' });
-
+const path = require('path');// nuevo 
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -17,8 +17,10 @@ createAdminUser();
 // Middlewares
 app.use(cors()); // Permite la comunicación entre el frontend y el backend
 app.use(express.json()); // Permite al servidor entender JSON
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 // Rutas de la API
+app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/tables', require('./routes/tableRoutes'));
 app.use('/api/menu', require('./routes/menuRoutes'));

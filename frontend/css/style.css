@@ -296,3 +296,64 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
         font-size: 2rem;
     }
 }
+
+/* --- Estilos para el Modal Personalizado --- */
+.modal-backdrop {
+    position: fixed; /* Se queda fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Se asegura que esté por encima de todo */
+    opacity: 0; /* Inicia invisible */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* No se puede hacer clic cuando está oculto */
+}
+
+.modal-backdrop:not(.hidden) {
+    opacity: 1;
+    pointer-events: all; /* Se puede hacer clic cuando está visible */
+}
+
+.modal-content {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    transform: scale(0.9); /* Inicia un poco más pequeño */
+    transition: transform 0.3s ease;
+}
+
+.modal-backdrop:not(.hidden) .modal-content {
+    transform: scale(1); /* Vuelve a su tamaño normal al mostrarse */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+    display: none !important;
+}

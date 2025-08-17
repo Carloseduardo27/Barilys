@@ -110,6 +110,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 0 1rem; /* <-- AÑADE ESTA LÍNEA */
 }
 
 .login-box {

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://barilys.onrender.com/api';
 
 // Verificar si el usuario está autenticado en cada página protegida
 document.addEventListener('DOMContentLoaded', () => {

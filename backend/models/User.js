@@ -32,7 +32,7 @@ const createAdminUser = async () => {
     if (!userExists) {
       const adminUser = new User({
         email: 'carlosperez@gmail.com',
-        password: 'carlos123',
+        password: 'Barylisapp.',
       });
       await adminUser.save();
       console.log('Usuario administrador creado.');
